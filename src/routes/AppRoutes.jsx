@@ -4,8 +4,7 @@ import SignupPage from '../pages/SignupPage';
 import LoginPAge from '../pages/LoginPAge';
 import ProfilePage from '../pages/ProfilePage';
 import Layout from '../layout/Layout';
-import ProtectedRoutes from '../components/protectedRoutes';
-
+import ProtectedRoutes from '../components/ProtectedRoutes'
 function AppRoutes() {
   const AppRoutes = createBrowserRouter([
     {
