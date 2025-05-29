@@ -28,6 +28,7 @@ function Profile() {
   };
 
   const ImgChange = () => {
+    if(confirm('Are you sure you want to change your image?')) {
     axios
       .put(`${url}/${id}`, { ...user, img })
       .then((response) => {
@@ -39,12 +40,13 @@ function Profile() {
         console.error('Error updating image:', error);
         toast.error('Failed to update image');
       });
-  };
+  };}
 
   const NameInputChange = (e) => {
     setUser({ ...user, username: e.target.value });
   };
   const usernameChange = () => {
+    if(confirm('Are you sure you want to change your username?')) {
     axios
       .put(`${url}/${id}`, user)
       .then((response) => {
@@ -62,13 +64,14 @@ function Profile() {
         console.error('Error updating username:', error);
         toast.error('Failed to update username');
       });
-  };
+  };}
 
   const EmailInputChange = (e) => {
     setUser({ ...user, email: e.target.value });
   };
 
   const emailChange = () => {
+    if(confirm('Are you sure you want to change your email?')) {
     axios
       .put(`${url}/${id}`, user)
       .then((response) => {
@@ -86,7 +89,7 @@ function Profile() {
         console.error('Error updating email:', error);
         toast.error('Failed to update email');
       });
-  };
+  };}
 
   const deleteAccount = () => {
     if(confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
