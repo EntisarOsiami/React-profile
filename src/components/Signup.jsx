@@ -32,7 +32,7 @@ function Signup() {
 
       let imageUrl = img;
       if (!imageUrl) {
-        imageUrl = 'https://via.placeholder.com/150';
+        imageUrl = '/avatar.jpg';
       }
 
       const userData = {

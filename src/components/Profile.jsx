@@ -28,82 +28,90 @@ function Profile() {
   };
 
   const ImgChange = () => {
-    if(confirm('Are you sure you want to change your image?')) {
-    axios
-      .put(`${url}/${id}`, { ...user, img })
-      .then((response) => {
-        setImg(response.data.img);
-        console.log('updated:', response.data);
-        toast.success('Image updated successfully');
-      })
-      .catch((error) => {
-        console.error('Error updating image:', error);
-        toast.error('Failed to update image');
-      });
-  };}
+    if (confirm('Are you sure you want to change your image?')) {
+      axios
+        .put(`${url}/${id}`, { ...user, img })
+        .then((response) => {
+          setImg(response.data.img);
+          console.log('updated:', response.data);
+          toast.success('Image updated successfully');
+        })
+        .catch((error) => {
+          console.error('Error updating image:', error);
+          toast.error('Failed to update image');
+        });
+    }
+  };
 
   const NameInputChange = (e) => {
     setUser({ ...user, username: e.target.value });
   };
   const usernameChange = () => {
-    if(confirm('Are you sure you want to change your username?')) {
-    axios
-      .put(`${url}/${id}`, user)
-      .then((response) => {
-        setUser(response.data);
-        const userUpdated = JSON.parse(localStorage.getItem('user') || '{}');
-        const updatedUser = {
-          ...userUpdated,
-          username: response.data.username,
-        };
-        localStorage.setItem('user', JSON.stringify(updatedUser));
-        console.log('updated:', response.data);
-        toast.success('Username updated successfully');
-      })
-      .catch((error) => {
-        console.error('Error updating username:', error);
-        toast.error('Failed to update username');
-      });
-  };}
+    if (confirm('Are you sure you want to change your username?')) {
+      axios
+        .put(`${url}/${id}`, user)
+        .then((response) => {
+          setUser(response.data);
+          const userUpdated = JSON.parse(localStorage.getItem('user') || '{}');
+          const updatedUser = {
+            ...userUpdated,
+            username: response.data.username,
+          };
+          localStorage.setItem('user', JSON.stringify(updatedUser));
+          console.log('updated:', response.data);
+          toast.success('Username updated successfully');
+        })
+        .catch((error) => {
+          console.error('Error updating username:', error);
+          toast.error('Failed to update username');
+        });
+    }
+  };
 
   const EmailInputChange = (e) => {
     setUser({ ...user, email: e.target.value });
   };
 
   const emailChange = () => {
-    if(confirm('Are you sure you want to change your email?')) {
-    axios
-      .put(`${url}/${id}`, user)
-      .then((response) => {
-        setUser(response.data);
-        const userUpdated = JSON.parse(localStorage.getItem('user') || '{}');
-        const updatedUser = {
-          ...userUpdated,
-          email: response.data.email,
-        };
-        localStorage.setItem('user', JSON.stringify(updatedUser));
-        console.log('updated:', response.data);
-        toast.success('Email updated successfully');
-      })
-      .catch((error) => {
-        console.error('Error updating email:', error);
-        toast.error('Failed to update email');
-      });
-  };}
+    if (confirm('Are you sure you want to change your email?')) {
+      axios
+        .put(`${url}/${id}`, user)
+        .then((response) => {
+          setUser(response.data);
+          const userUpdated = JSON.parse(localStorage.getItem('user') || '{}');
+          const updatedUser = {
+            ...userUpdated,
+            email: response.data.email,
+          };
+          localStorage.setItem('user', JSON.stringify(updatedUser));
+          console.log('updated:', response.data);
+          toast.success('Email updated successfully');
+        })
+        .catch((error) => {
+          console.error('Error updating email:', error);
+          toast.error('Failed to update email');
+        });
+    }
+  };
 
   const deleteAccount = () => {
-    if(confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
-    axios
-      .delete(`${url}/${id}`)
-      .then(() => {
-        localStorage.removeItem('user');
-        toast.success('Account deleted successfully');
-        window.location.href = '/'; 
-      })
-      .catch((error) => {
-        console.error('Error deleting account:', error);
-      });}
-  }
+    if (
+      confirm(
+        'Are you sure you want to delete your account? This action cannot be undone.'
+      )
+    ) {
+      axios
+        .delete(`${url}/${id}`)
+        .then(() => {
+          localStorage.removeItem('user');
+          toast.success('Account deleted successfully');
+          window.location.href = '/';
+        })
+        .catch((error) => {
+          console.error('Error deleting account:', error);
+        });
+    }
+  };
   return (
     <div className='flex flex-col items-center justify-center min-h-[80vh] py-8'>
       <h1 className='text-3xl font-bold text-center mt-6 mb-8'>Profile Page</h1>
@@ -172,11 +180,10 @@ function Profile() {
                   </button>
                 </div>
               </div>
-                 <button className='red-button' onClick={deleteAccount}>
-              Delete your Account
-            </button>
+              <button className='red-button' onClick={deleteAccount}>
+                Delete your Account
+              </button>
             </div>
-         
           </div>
         ) : (
           <p className='text-center mt-4'>Loading data...</p>
